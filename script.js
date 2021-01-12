@@ -5,6 +5,8 @@ const total = $('#total');
 const movieSelect = $('#movie');
 let ticketPrice = parseInt(movieSelect.val());
 
+populateUI();
+
 // Seat click event
 container.click(function(e) {
     if ($(e.target).hasClass('seat') && !$(e.target).hasClass('occupied')) {
@@ -61,3 +63,5 @@ movieSelect.change(function(e){
     setMovieData(e.target.selectedIndex, e.target.value);
     updateSelectedCount();
 })
+
+updateSelectedCount();
