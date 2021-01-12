@@ -14,8 +14,19 @@ container.click(function(e) {
     }
 });
 
+function setMovieData(movieIndex,moviePrice){
+    localStorage.setItem('selectedMovieIndex', movieIndex);
+    localStorage.setItem('selectedMoviePrice', moviePrice);
+}
+
 function updateSelectedCount(){
     const selectedSeats = $('.row .seat.selected');
+
+    const seatsIndex = [...selectedSeats].map(function(seat){
+        return [...seats].indexOf(seat);
+    })
+
+    localStorage.setItem('selectedSeats',JSON.stringify(seatsIndex));
 
     const selectedSeatsCount = selectedSeats.length;
     
