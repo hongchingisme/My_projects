@@ -36,6 +36,25 @@ function updateSelectedCount(){
 
 }
 
+function populateUI(){
+    const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
+
+    if(selectedSeats !== null && selectedSeats.length>0){
+        seats.each(function(index,seat){
+            if (selectedSeats.indexOf(index) >-1){
+                $(seat).addClass('selected');
+            }
+        })
+    }
+
+    const selectedMovieIndex = localStorage.getItem('selectedMovieIndex');
+
+    if(selectedMovieIndex !== null ){
+        movieSelect.get(0).selectedIndex = selectedMovieIndex;
+    }
+}
+
+
 
 movieSelect.change(function(e){
     ticketPrice =  parseInt($(this).val());
