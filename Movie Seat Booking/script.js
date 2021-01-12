@@ -8,13 +8,7 @@ let ticketPrice = parseInt(movieSelect.val());
 populateUI();
 
 // Seat click event
-container.click(function(e) {
-    if ($(e.target).hasClass('seat') && !$(e.target).hasClass('occupied')) {
-        $(e.target).toggleClass('selected');
 
-        updateSelectedCount();
-    }
-});
 
 function setMovieData(movieIndex,moviePrice){
     localStorage.setItem('selectedMovieIndex', movieIndex);
@@ -56,6 +50,14 @@ function populateUI(){
     }
 }
 
+
+container.click(function(e) {
+    if ($(e.target).hasClass('seat') && !$(e.target).hasClass('occupied')) {
+        $(e.target).toggleClass('selected');
+
+        updateSelectedCount();
+    }
+});
 
 
 movieSelect.change(function(e){
