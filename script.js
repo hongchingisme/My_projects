@@ -13,3 +13,21 @@ container.click(function(e) {
         updateSelectedCount();
     }
 });
+
+function updateSelectedCount(){
+    const selectedSeats = $('.row .seat.selected');
+
+    const selectedSeatsCount = selectedSeats.length;
+    
+    count.text(selectedSeatsCount);
+
+    total.text(selectedSeats.length *ticketPrice );
+
+}
+
+
+movieSelect.change(function(e){
+    ticketPrice =  parseInt($(this).val());
+    setMovieData(e.target.selectedIndex, e.target.value);
+    updateSelectedCount();
+})
