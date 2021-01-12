@@ -21,3 +21,35 @@ function isValidEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
+
+form.addEventListener('submit',function(e){
+    
+    
+    if(username.value === '' ){
+        showError(username,'Username is required');
+    }else{
+        showSuccess(username);
+    }
+
+    if(email.value === '' ){
+        showError(email,'email is required');
+    }else if (!isValidEmail(email.value)){
+        showError(email,'Email is not valid');
+    }else{
+        showSuccess(email);
+    }
+
+    if(password.value === '' ){
+        showError(password,'password is required');
+    }else{
+        showSuccess(password);
+    }
+
+    if(password2.value === '' ){
+        showError(password2,' Please confirm your password');
+    }else{
+        showSuccess(password2);
+    }
+    
+
+})
