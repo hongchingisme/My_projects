@@ -22,6 +22,16 @@ function isValidEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
+//checkpassword
+function checkpassword (input1 , input2){
+    if(input1.value !== input2.value){
+        showError(input2,'password is not match');
+    }else if(input1.value == input2.value){
+        showSuccess(password2);
+    }
+}
+
+//submit even
 form.addEventListener('submit',function(e){
     
     
@@ -51,5 +61,6 @@ form.addEventListener('submit',function(e){
         showSuccess(password2);
     }
     
+    checkpassword(password , password2);
 
 })
