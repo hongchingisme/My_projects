@@ -40,6 +40,7 @@ var AmountOne = $("#amount-one").val();
       $('#currency-two').val(temp);
       updateprice ()
       
+      
     });
     
     updateprice ()
