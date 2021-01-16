@@ -60,4 +60,12 @@ var AmountOne = $("#amount-one").val();
       updateprice ();
     })
 
+    $('#swap').click(function (e) { 
+      $("#rate").html("");
+      var temp =  $('#currency-one').val()
+      $('#currency-one').val($('#currency-two').val())
+      $('#currency-two').val(temp);
+      updateprice ()
+      
+    });
 
