@@ -40,7 +40,19 @@ var AmountOne = $("#amount-one").val();
       
     });
 
+    $("#amount-two").change(function (e) { 
+      e.preventDefault();
+      $("#rate").html("");
+      updateprice ();
+      
+    });
 
+    $("#amount-one").change(function (e) { 
+      e.preventDefault();
+      $("#rate").html("");
+      updateprice ();
+      
+    });
 
     $("#currency-one").change(function (e) {
       e.preventDefault();
