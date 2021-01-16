@@ -33,7 +33,7 @@ function checkpassword (input1 , input2){
 
 //submit even
 form.addEventListener('submit',function(e){
-    
+    e.preventDefault();
     
     if(username.value === '' ){
         showError(username,'Username is required');
@@ -54,10 +54,12 @@ form.addEventListener('submit',function(e){
     }else{
         showSuccess(password);
     }
-
-    if(password2.value !== password.value){
+    if(password2.value === '' ){
         showError(password2,' Please confirm your password');
+    }else{
+        showSuccess(password2);
     }
+    
 });
 
 //keyup even
