@@ -90,8 +90,8 @@ input[type="number"]{
 }
 
 .btn{
-  
    background-color: #9c88ff;
+   cursor: pointer;
    box-shadow: var(--box-shadow);
    border: 0 ;
    color: #fff;
@@ -103,6 +103,11 @@ input[type="number"]{
 
 }
 
+.btn:focus,
+.delete-btnLfocus{
+  outline: 0;
+}
+
 .list {
   list-style-type: none;
   padding: 0;
@@ -110,7 +115,7 @@ input[type="number"]{
 }
 
 .list li {
-  background-color: #fff;
+  background-color: #ffffff;
   box-shadow: var(--box-shadow);
   color: #333;
   display: flex;
@@ -128,4 +133,26 @@ input[type="number"]{
 
 .list li.minus{
   border-right: 5px solid #c0392b;
+}
+
+.delete-btn {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position: absolute;
+  top:20%;
+  left:-5%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+ 
+
+}
+
+.list li:hover .delete-btn{
+  opacity: 1;
 }
