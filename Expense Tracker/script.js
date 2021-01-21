@@ -15,8 +15,8 @@ const dummyTransactions = [
 
 let transactions = dummyTransactions;
 
-//add transactions to DOM list
 
+//add transactions to DOM list
 function addtransactionDOM (transaction){
     const sign = transaction.amount < 0 ? '-' : '+';
 
@@ -58,14 +58,6 @@ function addtransactionDOM (transaction){
     money_minus.text(`$${expense}`);
   }
   
-  // Remove transaction by ID
-  function removeTransaction(id) {
-    transactions = transactions.filter(transaction => transaction.id !== id);
-  
-    updateLocalStorage();
-  
-    init();
-  };
 
 
 // init app to clear list
@@ -79,3 +71,33 @@ function init (){
 
 // reset
 init();
+
+
+// submit function give object 'ID' and push data to transactions
+form.submit(function (e) { 
+    e.preventDefault();
+  
+    if (text.val().trim() === '' || amount.val().trim() === '') {
+      alert('Please add a text and amount');
+    } else {
+      const transaction = {
+        id: generateID(),
+        text: text.value,
+        amount: +amount.value
+      };
+  
+      transactions.push(transaction);
+  
+      addTransactionDOM(transaction);
+  
+      updateValues();
+  
+      text.val() = '';
+      amount.val() = '';
+    }
+});
+
+// Generate random ID
+function generateID() {
+    return Math.floor(Math.random() * 100000000);
+  }
