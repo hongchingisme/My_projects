@@ -37,6 +37,36 @@ function addtransactionDOM (transaction){
     list.append(item);
   }
 
+// update total values and - + valuse
+  function updateValues() {
+    const amounts = transactions.map(transaction => transaction.amount);
+  
+    const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+  
+    const income = amounts
+      .filter(item => item > 0)
+      .reduce((acc, item) => (acc += item), 0)
+      .toFixed(2);
+  
+    const expense = (
+      amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) *
+      -1
+    ).toFixed(2);
+  
+    balance.text(`$${total}`);
+    money_plus.text(`$${income}`);
+    money_minus.text(`$${expense}`);
+  }
+  
+  // Remove transaction by ID
+  function removeTransaction(id) {
+    transactions = transactions.filter(transaction => transaction.id !== id);
+  
+    updateLocalStorage();
+  
+    init();
+  };
+
 
 // init app to clear list
 
@@ -44,6 +74,7 @@ function init (){
     list.html('');
     // Make sure every value runs through the function
     transactions.forEach(addtransactionDOM);
+    updateValues();
 }
 
 // reset
