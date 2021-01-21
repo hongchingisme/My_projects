@@ -6,18 +6,21 @@ const form = $('#form');
 const text = $('#text');
 const amount = $('#amount');
 
-const dummyTransactions = [
-{ id: 1, text: 'Flower', amount: -20 },
-{ id: 2, text: 'Salary', amount: 300 },
-{ id: 3, text: 'Book', amount: -10 },
-{ id: 4, text: 'Camera', amount: 150 }
-];
 
-let transactions = dummyTransactions;
+// Update local storage transactions
+function updateLocalStorage() {
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+  };
+const localStorageTransactions = JSON.parse(
+    localStorage.getItem('transactions')
+  );
+  
+  let transactions =
+    localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
 
 
 //add transactions to DOM list
-function addtransactionDOM (transaction){
+function addTransactionDOM (transaction){
     const sign = transaction.amount < 0 ? '-' : '+';
 
     const item = document.createElement('li');
@@ -56,6 +59,7 @@ function addtransactionDOM (transaction){
     balance.text(`$${total}`);
     money_plus.text(`$${income}`);
     money_minus.text(`$${expense}`);
+    
   }
   
 
@@ -65,7 +69,7 @@ function addtransactionDOM (transaction){
 function init (){
     list.html('');
     // Make sure every value runs through the function
-    transactions.forEach(addtransactionDOM);
+    transactions.forEach(addTransactionDOM);
     updateValues();
 }
 
@@ -82,18 +86,17 @@ form.submit(function (e) {
     } else {
       const transaction = {
         id: generateID(),
-        text: text.value,
-        amount: +amount.value
+        text: text.val(),
+        amount: +amount.val()
       };
-  
+
       transactions.push(transaction);
-  
       addTransactionDOM(transaction);
-  
+      updateLocalStorage();
       updateValues();
   
-      text.val() = '';
-      amount.val() = '';
+      text.val('');
+      amount.val('');
     }
 });
 
@@ -105,9 +108,9 @@ function generateID() {
   // Remove transaction by ID
 function removeTransaction(id) {
     transactions = transactions.filter(transaction => transaction.id !== id);
-  
-    
-  
+    updateLocalStorage()
     init();
   };
+
+
 
