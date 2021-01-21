@@ -101,3 +101,13 @@ form.submit(function (e) {
 function generateID() {
     return Math.floor(Math.random() * 100000000);
   }
+
+  // Remove transaction by ID
+function removeTransaction(id) {
+    transactions = transactions.filter(transaction => transaction.id !== id);
+  
+    
+  
+    init();
+  };
+
