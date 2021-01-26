@@ -106,9 +106,17 @@ function updateProgress (e){
 progressContainer.addEventListener('click' ,setProgress);
 // 使用 clientWidth 可以獲得當前點擊的 "子元素" 寬度
 function setProgress (e){
+//抓取目標總長度
     const width = this.clientWidth;
+// 使用 offsetX 去抓取點擊到的 X 座標
     const clickX = e.offsetX;
+// 定義 duration 為 音頻的長度
     const duration = audio.duration;
-
+// 點擊之後音頻的位置 = 點擊的位置 / 總長度 * 音頻的長度
     audio.currentTime = (clickX /width) *duration;
 }
+
+//結束音樂，並且往下個音樂開始
+//使用 api ended 事件，讓歌曲結束後自動執行函式 nextSong
+
+audio.addEventListener('ended', nextSong);
