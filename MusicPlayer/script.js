@@ -1,7 +1,7 @@
 const musicContainer = document.getElementById('music-container');
 const playBtn = document.getElementById('play');
 const prevBtn = document.getElementById('prev');
-const nextBtb = document.getElementById('next');
+const nextBtn = document.getElementById('next');
 const audio = document.getElementById('audio');
 const progress = document.getElementById('progress');
 const progressContainer = document.getElementById('progress-container');
@@ -15,7 +15,7 @@ const songs = ['HelloGoodbye' ,'Onemoretime' ,'RainMusic'] ;
 
 // 抓取歌曲位置
 
-let songIndex = 0;
+let songIndex = 2;
 
 // 將歌曲的的資訊放進 DOM
 
@@ -58,3 +58,31 @@ playBtn.addEventListener('click', function(){
         playSong();
     }
 });
+
+// 寫入下一首歌功能
+
+nextBtn.addEventListener('click' , nextSong );
+
+function nextSong(){
+    songIndex++;
+    if(songIndex > songs.length -1 ){
+        songIndex  = 0;
+    }
+
+    loadsong(songs [songIndex]);
+    playSong();
+}
+
+prevBtn.addEventListener('click' , prevSong );
+
+function prevSong(){
+    songIndex--;
+    if(songIndex < 0){
+        songIndex = songs.length - 1;
+    }
+
+    loadsong(songs [songIndex]);
+    playSong();
+}
+
+
