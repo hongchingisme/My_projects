@@ -73,6 +73,9 @@ function nextSong(){
     playSong();
 }
 
+
+// 寫入上一首歌功能
+
 prevBtn.addEventListener('click' , prevSong );
 
 function prevSong(){
@@ -84,5 +87,19 @@ function prevSong(){
     loadsong(songs [songIndex]);
     playSong();
 }
+
+
+// 抓取歌曲的時間
+
+audio.addEventListener('timeupdate' , updateProgress);
+
+// duration 為 js audio 當中 api 的用法，用來抓取音頻的長度
+// currenTime 屬性會返還音頻當前位置 (秒針表示) 當設定該屬性時，播放會跳到指定位置
+function updateProgress (e){
+    const {duration , currentTime} = e.srcElement;
+    progressPercent = (currentTime / duration) *100 ;
+    progress.style.width = `${progressPercent}%`;   
+}
+
 
 
