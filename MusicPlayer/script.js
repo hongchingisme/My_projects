@@ -101,5 +101,14 @@ function updateProgress (e){
     progress.style.width = `${progressPercent}%`;   
 }
 
+// 點擊音樂條時，跳轉到當前 % 數的功能
 
+progressContainer.addEventListener('click' ,setProgress);
+// 使用 clientWidth 可以獲得當前點擊的 "子元素" 寬度
+function setProgress (e){
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
 
+    audio.currentTime = (clickX /width) *duration;
+}
