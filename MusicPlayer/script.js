@@ -74,4 +74,17 @@ prevBtn.click (function prevSong(){
 
     loadsong(songs [songsIndex]);
     playSong();
-})
+});
+
+
+audio.on('timeupdate', function() {
+    const duration = this.duration;
+    const currentTime = this.currentTime;
+    const progressPercent = ((currentTime / duration) *100 );
+    progress.width (`${progressPercent}%`);   
+});
+
+
+
+
+
