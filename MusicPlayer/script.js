@@ -93,6 +93,15 @@ progressContainer.bind('click' ,function(e){
 });
 
 
+audio.on('ended', function(){
+    songsIndex++;
+    if(songsIndex > songs.length -1 ){
+        songsIndex  = 0;
+    }
+
+    loadsong(songs [songsIndex]);
+    playSong();
+});
 
 
 
