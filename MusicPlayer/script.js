@@ -81,8 +81,18 @@ audio.on('timeupdate', function() {
     const duration = this.duration;
     const currentTime = this.currentTime;
     const progressPercent = ((currentTime / duration) *100 );
-    progress.width (`${progressPercent}%`);   
+    progress.width (`${progressPercent}%`); 
 });
+
+progressContainer.bind('click' ,function(e){
+    const width = progressContainer.width()
+    const clickX =  progressContainer.offset().left  
+    const duration =  audio[0].duration;
+    const page  = e.pageX;
+    audio[0].currentTime= ((page-clickX) /width)*duration;
+});
+
+
 
 
 
