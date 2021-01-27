@@ -13,7 +13,7 @@ const songs = ['HelloGoodbye' ,'Onemoretime' ,'RainMusic'] ;
 
 
 
-let songsIndex = 2;
+let songsIndex = 1;
 
 
 
@@ -52,3 +52,26 @@ function pauseSong() {
 
     $('#audio').get(0).pause();
 }
+
+
+nextBtn.click(function nextSong(){
+    songsIndex++;
+    if(songsIndex > songs.length -1 ){
+        songsIndex  = 0;
+    }
+
+    loadsong(songs [songsIndex]);
+    playSong();
+})
+
+
+
+prevBtn.click (function prevSong(){
+    songsIndex--;
+    if(songsIndex < 0){
+        songsIndex = songs.length - 1;
+    }
+
+    loadsong(songs [songsIndex]);
+    playSong();
+})
