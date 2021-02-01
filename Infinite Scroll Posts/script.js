@@ -1,8 +1,8 @@
 const postContainer = document.getElementById('post-container');
-const loading = document.querySelector('.loading');
+const loading = document.querySelector('.loader');
 const filter = document.getElementById('filter');
 
-let limit = 3;
+let limit = 5;
 let page = 1 ;
 
 
@@ -41,4 +41,23 @@ async function showPosts(){
     }
     )}
 
+// 顯示一開始的頁面
 showPosts()
+
+function showLoading(){
+    loading.classList.add('show')
+}
+
+
+
+window.addEventListener('scroll', function(){
+    const top = window.document.documentElement.scrollTop;
+    const SH = window.document.documentElement.scrollHeight;
+    const CH = window.document.documentElement.clientHeight;
+    if(top + CH >= SH -5){
+      showLoading();
+    }
+
+    
+}) ;
+
