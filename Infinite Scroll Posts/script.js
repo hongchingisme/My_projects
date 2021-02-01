@@ -46,6 +46,15 @@ showPosts()
 
 function showLoading(){
     loading.classList.add('show')
+
+    setTimeout(function(){
+        loading.classList.remove('show')
+        
+        setTimeout(function(){
+            page++;
+            showPosts();
+        },300)
+    },1000)
 }
 
 
