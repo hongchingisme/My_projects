@@ -74,7 +74,10 @@ window.addEventListener('scroll', function(){
     
 }) ;
 
-
+//在過濾當中寫入 input 的監聽事件
+//toUpperCase讓搜尋的英文強迫變大寫，比較好判斷
+//讓每個 post 去跑一次 function
+//把每個 title 跟 body 都去檢查，如果說 title 跟 body 的陣列回傳 > -1 也就是說，如果有符合的內文就會大於 -1 就把它顯示出來，如果沒有就為none 
 filter.addEventListener('input',filterPosts)
 
 function filterPosts(e){
