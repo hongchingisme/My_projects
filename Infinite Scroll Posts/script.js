@@ -57,13 +57,17 @@ function showLoading(){
     },1000)
 }
 
-
+//寫入一個 滾動事件，先抓取滾動的值
+//scrollTop:內容被捲動的距離
+//scrollHeight:元素所包含的「子元素」的「完整」高度，其中包含了超出捲軸之外的部分的寬度與高度。
+//clientHeight :元素所包含的「子元素」的高度，其中包含了padding，但不包含邊界及捲軸。
+//這裡是當我們捲動的距離加上元素本身的距離大於等於整個元素包含全部的高度 -5 時，就會觸發 showLoading 事件
 
 window.addEventListener('scroll', function(){
     const top = window.document.documentElement.scrollTop;
     const SH = window.document.documentElement.scrollHeight;
     const CH = window.document.documentElement.clientHeight;
-    if(top + CH >= SH -5){
+    if(top + CH >= SH -30){
       showLoading();
     }
 
