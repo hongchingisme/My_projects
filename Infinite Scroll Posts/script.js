@@ -39,7 +39,7 @@ async function showPosts(){
 
     
 
-    $(window).on('scroll', function(){
+$(window).on('scroll', function(){
         const top = $(window).scrollTop();
         const SH = $(window).height();  
         const CH = $(document).height();
@@ -51,15 +51,25 @@ async function showPosts(){
     }) ;
 
    
-    function showLoading(){
+function showLoading(){
         loading.addClass('show')
     
         setTimeout(function(){
-            loading.remove('show')
+            loading.removeClass('show')
             
             setTimeout(function(){
                 page++;
                 showPosts();
             },300)
         },1000)
-    }
+    };
+
+
+filter.on('input',filterPosts)
+    function filterPosts(){
+        const term = $('input').val().toLowerCase();
+        $('.post').css('display','none')
+        $(`.post:contains('${term}')`).css('display','flex')
+        ;
+    };
+
