@@ -21,8 +21,7 @@ async function getPosts(){
 async function showPosts(){
     const posts = await getPosts();
 
-    console.log(posts)
-    //JQuery 要使用 appendTo 才可以把欲新增的元素加到 DOM 當中
+    //JQuery 要使用 appendTo (要新增的位置)才可以把欲新增的元素加到 DOM 當中
     posts.forEach(function(post){
         const postEl = $('<div></div>').appendTo(postContainer);
         postEl.addClass('post');
@@ -37,3 +36,30 @@ async function showPosts(){
     )}
 
     showPosts()
+
+    
+
+    $(window).on('scroll', function(){
+        const top = $(window).scrollTop();
+        const SH = $(window).height();  
+        const CH = $(document).height();
+        if(top + CH >= SH -30){
+            showLoading();
+         
+        }
+    
+    }) ;
+
+   
+    function showLoading(){
+        loading.addClass('show')
+    
+        setTimeout(function(){
+            loading.remove('show')
+            
+            setTimeout(function(){
+                page++;
+                showPosts();
+            },300)
+        },1000)
+    }
