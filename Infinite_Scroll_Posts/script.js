@@ -64,7 +64,7 @@ function showLoading(){
         },1000)
     };
 
-
+// add filter function 
 filter.on('input',filterPosts)
     function filterPosts(){
         const term = $('input').val().toLowerCase();
