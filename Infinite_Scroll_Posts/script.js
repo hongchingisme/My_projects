@@ -5,14 +5,14 @@ const filter = $('#filter');
 let limit = 5;
 let page = 1 ;
 
-
-async function getPosts() {
+async function getPosts(){
     const res = await fetch(
-        `https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`
+        `http://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`
     );
 
     const data = await res.json();
 
+    
     return data;
 }
 
@@ -64,7 +64,7 @@ function showLoading(){
         },1000)
     };
 
-// add filter function 
+
 filter.on('input',filterPosts)
     function filterPosts(){
         const term = $('input').val().toLowerCase();
