@@ -99,7 +99,7 @@ input{
 
 .score-container{
     position: absolute;
-    top: 60px;
+    top: 75px;
     right: 20px;
 
 }
@@ -107,7 +107,7 @@ input{
 .time-container{
     position: absolute;
     top: 60px;
-    right: 20px;
+    left: 20px;
     
 }
 
