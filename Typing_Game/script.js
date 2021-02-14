@@ -114,8 +114,14 @@ text.addEventListener('input' , function(e){
     e.target.value = '';
 
     //每當玩家輸入成功就加5秒鐘當作獎勵
-
-    time = time +5;
+    //設定不同難度之下的獎勵
+    if(difficulty === 'hard') {
+      time += 2;
+    }else if(difficulty === 'medium'){
+      time += 3;
+    }else{
+      time +=5;
+    }
     updataTime();
   }
 });
@@ -132,4 +138,6 @@ settingsBtn.addEventListener('click' , function(){
 settingsForm.addEventListener('change' , function(e){
   difficulty = e.target.value;
   localStorage.setItem('difficulty',difficulty);
+  location.reload();
+
 })
