@@ -42,6 +42,13 @@ let time = 10;
 // 讓使用者進入網頁的時候，自動就從 input 開始
 text.focus();
 
+// 設定初始難度
+// 抓取存在瀏覽器中的選項，如果之前沒有操作過會為 null 這時候就讓它是 medium
+let difficulty = localStorage.getItem('difficulty') !==null ? localStorage.getItem('difficulty'):'Medium' ;
+
+//將抓取到最新的難度選項顯示在選單當中
+difficultySelect.value = difficulty;
+
 //讓時間倒數
 //setInterval() 是固定延遲了某段時間之後，執行對應的程式碼，然後「不斷循環」。
 const timeInterval = setInterval(updataTime , 1000);
@@ -117,5 +124,12 @@ text.addEventListener('input' , function(e){
 //給予設定紐功能，讓他把上面的難度視窗關開
 
 settingsBtn.addEventListener('click' , function(){
-  settings.classList.toggle('hide')
+  settings.classList.toggle('hide');
+});
+
+// 設定難度選項調
+
+settingsForm.addEventListener('change' , function(e){
+  difficulty = e.target.value;
+  localStorage.setItem('difficulty',difficulty);
 })
