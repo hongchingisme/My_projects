@@ -55,3 +55,15 @@ function addWordToDom(){
 }
 
 addWordToDom();
+
+// 文字輸入的事件監聽
+
+text.addEventListener('input' , function(e){
+  const insertedText = e.target.value;
+  
+  if(insertedText === randomWord){  
+    addWordToDom()
+    // 輸入後要清除 input 裡面的值，要不然會一直疊加
+    e.target.value = '';
+  }
+})
