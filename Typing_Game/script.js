@@ -79,8 +79,21 @@ function updataTime (){
   if(time === 0){
     //寫入 clearInterval() 來停止倒數
     clearInterval(timeInterval);
+    //寫入遊戲結束的功能  
+    gameOver();
   }
-}
+};
+
+// 寫入遊戲結束的功能
+
+function gameOver(){
+  endgameEl.innerHTML = `
+    <h1>Time ran out</h1>
+    <p>Your final score is ${score}</p>
+    <button onclick = "location.reload()">Reload</button>
+  ` ;
+  endgameEl.style.display = "flex";
+};
 
 // 文字輸入的事件監聽
 
