@@ -39,6 +39,8 @@ let score = 0 ;
 // 初始的時間
 let time = 10;
 
+text.focus();
+
 // 寫入一個隨機文字的函式
 // 利用產生隨機亂數並且使用 floor 可以將亂數上下取整數並且乘上陣列長度達成效果
 function getRandomWord(){
