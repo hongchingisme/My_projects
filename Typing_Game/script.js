@@ -39,7 +39,12 @@ let score = 0 ;
 // 初始的時間
 let time = 10;
 
+// 讓使用者進入網頁的時候，自動就從 input 開始
 text.focus();
+
+//讓時間倒數
+//setInterval() 是固定延遲了某段時間之後，執行對應的程式碼，然後「不斷循環」。
+const timeInterval = setInterval(updataTime , 1000);
 
 // 寫入一個隨機文字的函式
 // 利用產生隨機亂數並且使用 floor 可以將亂數上下取整數並且乘上陣列長度達成效果
@@ -47,14 +52,14 @@ function getRandomWord(){
   
   return words[Math.floor(Math.random()* words.length)]
  
-}
+};
 
 // 將產生的文字顯示在 DOM 上
 
 function addWordToDom(){
   randomWord = getRandomWord();
   word.innerHTML = randomWord;
-}
+};
 
 addWordToDom();
 
@@ -65,6 +70,16 @@ function updataScore(){
   score++ ;
 
   scoreEl.innerHTML = score;
+}
+
+//時間倒數功能
+function updataTime (){
+  time--;
+  timeEl.innerHTML = time + 's';
+  if(time === 0){
+    //寫入 clearInterval() 來停止倒數
+    clearInterval(timeInterval);
+  }
 }
 
 // 文字輸入的事件監聽
