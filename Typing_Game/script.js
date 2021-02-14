@@ -40,10 +40,18 @@ let score = 0 ;
 let time = 10;
 
 // 寫入一個隨機文字的函式
+// 利用產生隨機亂數並且使用 floor 可以將亂數上下取整數並且乘上陣列長度達成效果
 function getRandomWord(){
   
   return words[Math.floor(Math.random()* words.length)]
  
 }
 
-console.log(getRandomWord());
+// 將產生的文字顯示在 DOM 上
+
+function addWordToDom(){
+  randomWord = getRandomWord();
+  word.innerHTML = randomWord;
+}
+
+addWordToDom();
