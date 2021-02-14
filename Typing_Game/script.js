@@ -56,6 +56,15 @@ function addWordToDom(){
 
 addWordToDom();
 
+
+// 寫入分數更新事件
+
+function updataScore(){
+  score++ ;
+
+  scoreEl.innerHTML = score;
+}
+
 // 文字輸入的事件監聽
 
 text.addEventListener('input' , function(e){
@@ -63,7 +72,8 @@ text.addEventListener('input' , function(e){
   
   if(insertedText === randomWord){  
     addWordToDom()
+    updataScore()
     // 輸入後要清除 input 裡面的值，要不然會一直疊加
     e.target.value = '';
   }
-})
+});
