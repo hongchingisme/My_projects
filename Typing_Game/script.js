@@ -50,7 +50,7 @@ const timeInterval = setInterval(updataTime , 1000);
 // 利用產生隨機亂數並且使用 floor 可以將亂數上下取整數並且乘上陣列長度達成效果
 function getRandomWord(){
   
-  return words[Math.floor(Math.random()* words.length)]
+  return words[Math.floor(Math.random()* words.length)];
  
 };
 
@@ -70,7 +70,7 @@ function updataScore(){
   score++ ;
 
   scoreEl.innerHTML = score;
-}
+};
 
 //時間倒數功能
 function updataTime (){
@@ -85,7 +85,7 @@ function updataTime (){
 };
 
 // 寫入遊戲結束的功能
-
+// 使用 location.reload() 來將頁面刷新
 function gameOver(){
   endgameEl.innerHTML = `
     <h1>Time ran out</h1>
@@ -105,5 +105,11 @@ text.addEventListener('input' , function(e){
     updataScore()
     // 輸入後要清除 input 裡面的值，要不然會一直疊加
     e.target.value = '';
+
+    //每當玩家輸入成功就加5秒鐘當作獎勵
+
+    time = time +5;
+    updataTime();
   }
 });
+
