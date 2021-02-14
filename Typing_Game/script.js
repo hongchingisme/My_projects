@@ -113,3 +113,9 @@ text.addEventListener('input' , function(e){
   }
 });
 
+
+//給予設定紐功能，讓他把上面的難度視窗關開
+
+settingsBtn.addEventListener('click' , function(){
+  settings.classList.toggle('hide')
+})
