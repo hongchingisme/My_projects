@@ -99,6 +99,17 @@ function updataTime (){
   if(time === 0){
     //寫入 clearInterval() 來停止倒數
     clearInterval(timeInterval);
-
+    gameOver();
   }
+};
+
+// 寫入遊戲結束的功能
+// 使用 location.reload() 來將頁面刷新
+function gameOver(){
+  endgameEl.html( `
+    <h1>Time ran out</h1>
+    <p>Your final score is ${score}</p>
+    <button onclick = "location.reload()">Reload</button>
+  ` );
+  endgameEl.css('display' , 'flex');
 };
