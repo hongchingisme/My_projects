@@ -98,7 +98,7 @@ text.focus();
 
 // 設定初始難度
 // 抓取存在瀏覽器中的選項，如果之前沒有操作過會為 null 這時候就讓它是 medium
-let difficulty = localStorage.getItem('difficulty') !==null ? localStorage.getItem('difficulty'):'Medium' ;
+let difficulty = localStorage.getItem('difficulty') !==null ? localStorage.getItem('difficulty'):'medium' ;
 
 
 difficultySelect.val(difficulty);
