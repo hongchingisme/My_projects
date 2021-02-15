@@ -46,6 +46,10 @@ return words[Math.floor(Math.random()* words.length)];
  
 };
 
+//讓時間倒數
+//setInterval() 是固定延遲了某段時間之後，執行對應的程式碼，然後「不斷循環」。
+const timeInterval = setInterval(updataTime , 1000);
+
 // 將產生的文字顯示在 DOM 上
 
 function addWordToDom(){
@@ -87,3 +91,14 @@ text.on('input' , function(e){
 settingsBtn.on('click' , function(){
   settings.toggle('hide');
 });
+
+//時間倒數功能
+function updataTime (){
+  time--;
+  timeEl.html(time + 's');
+  if(time === 0){
+    //寫入 clearInterval() 來停止倒數
+    clearInterval(timeInterval);
+
+  }
+};
