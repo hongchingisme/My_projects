@@ -80,7 +80,16 @@ text.on('input' , function(e){
     
     // 輸入後要清除 input 裡面的值，要不然會一直疊加
     text.val('') ;
-
+    //每當玩家輸入成功就加5秒鐘當作獎勵
+    //設定不同難度之下的獎勵
+    if(difficulty === 'hard') {
+      time += 2;
+    }else if(difficulty === 'medium'){
+      time += 3;
+    }else{
+      time +=5;
+    }
+    updataTime();
   }
 });
 
@@ -127,7 +136,6 @@ function gameOver(){
 
 settingsForm.on('change' , function(e){
   difficulty = difficultySelect.val();
-  console.log(difficulty);
   localStorage.setItem('difficulty',difficulty);
   location.reload();
 });
