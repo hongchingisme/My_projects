@@ -80,3 +80,10 @@ text.on('input' , function(e){
   }
 });
 
+
+
+//給予設定紐功能，讓它把上面的難度視窗關開
+
+settingsBtn.on('click' , function(){
+  settings.toggle('hide');
+});
