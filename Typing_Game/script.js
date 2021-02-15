@@ -54,3 +54,20 @@ function addWordToDom(){
 };
 
 addWordToDom();
+
+
+// 文字輸入的事件監聽
+
+text.on('input' , function(e){
+  const insertedText = text.val();
+  
+  if(insertedText === randomWord){  
+    addWordToDom();
+    
+    // 輸入後要清除 input 裡面的值，要不然會一直疊加
+    text.val('') ;
+
+   
+
+  }
+});
