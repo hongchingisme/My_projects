@@ -84,7 +84,15 @@ text.on('input' , function(e){
   }
 });
 
+// 讓使用者進入網頁的時候，自動就從 input 開始
+text.focus();
 
+// 設定初始難度
+// 抓取存在瀏覽器中的選項，如果之前沒有操作過會為 null 這時候就讓它是 medium
+let difficulty = localStorage.getItem('difficulty') !==null ? localStorage.getItem('difficulty'):'Medium' ;
+
+
+difficultySelect.val(difficulty);
 
 //給予設定紐功能，讓它把上面的難度視窗關開
 
@@ -113,3 +121,14 @@ function gameOver(){
   ` );
   endgameEl.css('display' , 'flex');
 };
+
+
+// 設定難度選項調
+
+settingsForm.on('change' , function(e){
+  difficulty = difficultySelect.val();
+  console.log(difficulty);
+  localStorage.setItem('difficulty',difficulty);
+  location.reload();
+});
+
