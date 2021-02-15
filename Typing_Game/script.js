@@ -55,6 +55,15 @@ function addWordToDom(){
 
 addWordToDom();
 
+// 寫入分數更新事件
+
+function updataScore(){
+  score++ ;
+
+  scoreEl.html(score);
+};
+
+
 
 // 文字輸入的事件監聽
 
@@ -63,11 +72,11 @@ text.on('input' , function(e){
   
   if(insertedText === randomWord){  
     addWordToDom();
+    updataScore();
     
     // 輸入後要清除 input 裡面的值，要不然會一直疊加
     text.val('') ;
 
-   
-
   }
 });
+
