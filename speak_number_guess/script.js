@@ -43,12 +43,12 @@ function checkNumber(msg){
         msgEL.innerHTML += '<div>這不是一個有效的數字</div>'
         return;
     }
-
+    //超出或太小給予提示
     if(num>100 || num<1){
         msgEL.innerHTML += '<div>數字在 1~100之間</div>'
         return;
     }
-
+    //答對輸出恭喜訊息，若還沒會提示數字高低
     if(num === randomNum){
         document.body.innerHTML = `
         <h2>恭喜您，正確的數字就是${num}</h2>
@@ -62,4 +62,6 @@ function checkNumber(msg){
 }
 //寫入事件監聽，要使用 result 才能返還語音辨識結果
 recognition.addEventListener('result' ,onSpeak);
+
+
 
