@@ -38,11 +38,11 @@ p{
     margin-top: 40px;
 }
 
+/*因為 span 是行內元素 line 所以要把他轉成u行內區塊 inline-block才可以撐開*/
 .box{
     border : 1px solid #dedede;
     display: inline-block;
     font-size: 30px;
     margin: 20px;
     padding: 10px;
-
 }
