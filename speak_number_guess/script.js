@@ -18,3 +18,12 @@ let recognition = new window.SpeechRecognition();
 // 語音辨識 api 用法，讓瀏覽器判斷語音開始
 recognition.start();
 
+//寫入事件監聽，要使用 result 才能返還語音辨識結果
+recognition.addEventListener('result' ,onSpeak);
+
+// 捕獲語音函式
+function onSpeak(e){
+    const msg = e.results[0][0].transcript;
+    console.log(msg);
+    
+};
