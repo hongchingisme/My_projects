@@ -24,6 +24,15 @@ recognition.addEventListener('result' ,onSpeak);
 // 捕獲語音函式
 function onSpeak(e){
     const msg = e.results[0][0].transcript;
-    console.log(msg);
+    writeMessage(msg);
     
 };
+
+//將捕獲的語音數值寫入 DOM
+function writeMessage(msg){
+
+    msgEL.html(`
+    <div>您的數字：</div>
+    <span class="box">${msg}</span>
+    `);
+}
