@@ -65,3 +65,14 @@ function checkNumber(msg){
         msgEL.append('<div>再高一點！</div>')
     }
 }
+
+//寫入事件結束事件，當結束的時候，我們執行函式，讓語音辨識重啟
+recognition.addEventListener('end' , function(){
+    recognition.start();
+});
+
+$(document.body).on('click' , function(e){
+    if(e.target.id == "play-again"){
+        window.location.reload()
+    };
+});
