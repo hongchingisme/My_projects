@@ -4,13 +4,16 @@ const minutes = document.getElementById('minutes');
 const seconds = document.getElementById('seconds');
 const countdown = document.getElementById('countdown');
 
+const year = document.getElementById('year');
+
+
 //取得目前 Date 裡面的年份
 
 const currentYear = new Date().getFullYear();
 
 //設定明年 1月 1日的時間點
 
-const newYearTime = new Date(`January 01 ${currentYear +1} 00:00:00`)
+const newYearTime = new Date(`January 01 ${currentYear+1} 00:00:00`)
 
 // 抓取明年與現在時間的差異毫秒 (返還的值都是毫秒)
 // 透過 / 1000 取得毫秒 /60取得分鐘 /60取得小時 /24 取得天數
@@ -32,3 +35,8 @@ function updataCountdown() {
 
 
 setInterval( updataCountdown , 1000);
+
+
+//把下一年的年份更新到 DOM 裡面
+
+year.innerHTML = currentYear;
