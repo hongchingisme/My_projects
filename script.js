@@ -6,9 +6,9 @@ const countdown = document.getElementById('countdown');
 
 //取得目前 Date 裡面的年份
 
-const currentYear = new Date().getFullYear;
+const currentYear = new Date().getFullYear();
 
 //設定明年 1月 1日的時間點
 
-const newYearTime = new Date(`january 01 ${currentYear +1} 00:00:00`)
+const newYearTime = new Date(`January 01 ${currentYear +1} 00:00:00`)
 
