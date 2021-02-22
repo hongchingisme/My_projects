@@ -27,6 +27,14 @@ h1{
     text-shadow: 0.1em 0.1em #111 ;  
 }
 
+.year {
+    font-size: 200px;
+    color: white;
+    opacity: 0.4;
+    position: absolute;
+    bottom: 20px;
+}
+
 /* 增加夜間效果 */
 
 body::after {
