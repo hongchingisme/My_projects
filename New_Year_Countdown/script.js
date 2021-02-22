@@ -35,3 +35,14 @@ function updataCountdown() {
 
 //設定 每秒執行函式的 JS 內建函式 setInterval()
 setInterval( updataCountdown , 1000);
+
+//把下一年的年份更新到 DOM 裡面
+
+year.html(currentYear);
+
+//讀取圈圈設定，讓他在一秒後消失，並讓時間顯示
+
+setTimeout(function (){
+    loading.remove();
+    countdown.css('display' , 'flex');
+},1000);
