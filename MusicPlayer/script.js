@@ -84,7 +84,7 @@ audio.on('timeupdate', function() {
     progress.width (`${progressPercent}%`); 
 });
 
-progressContainer.bind('click' ,function(e){
+progressContainer.on('click' ,function(e){
     const width = progressContainer.width()
     const clickX =  progressContainer.offset().left  
     const duration =  audio[0].duration;
