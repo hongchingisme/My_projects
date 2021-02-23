@@ -41,6 +41,7 @@ setInterval( updataCountdown , 1000);
 year.html(currentYear);
 
 //讀取圈圈設定，讓他在一秒後消失，並讓時間顯示
+//取消原本 countdwon container 內的 display none;
 
 setTimeout(function (){
     loading.remove();
