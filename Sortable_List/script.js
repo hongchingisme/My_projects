@@ -45,9 +45,7 @@ function createList(){
         return data.value;
       })
     .forEach(function(comicsname , index){
-        console.log(comicsname)
         const listItem = document.createElement('li');
-        
         listItem.setAttribute('data-index' , index);
 
         listItem.innerHTML = ` 

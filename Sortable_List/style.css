@@ -33,6 +33,7 @@ body {
     border: gray 1px solid;
     border-radius: 10px;
     padding: 5px;
+    margin: 0;
 }
 
 
@@ -87,7 +88,7 @@ body::after{
     
 }
 
-.comicsname{
+.draggable-list .comicsname{
     margin:  0 20px 0 0;
 }
 
@@ -98,4 +99,33 @@ body::after{
     justify-content: space-between;
     padding: 15px;
     flex:1
+}
+
+.draggable-list li.right .comicsname{
+    color: #3ae374;
+}
+
+.draggable-list li.wrong .comicsname{
+    color: #ff3838;
+}
+
+.draggable-list li.over .draggable {
+    background-color: #eaeaea ;
+}
+
+.check-btn{
+    background-color:var(--background-color) ;
+    border:none;
+    color: var(--text-color);
+    font-size: 16px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.check-btn:active{
+    transform: scale(0.95);
+}
+
+.check-btn:focus{
+    outline: none;
 }
