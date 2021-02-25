@@ -25,17 +25,34 @@ let dragStartIndex;
 createList();
 
 //插入物件表格進入 DOM
-
+//賦予每個 data 一個隨機的數值
 function createList(){
-    [...comics].forEach(function(comicsname , index){
-        
+    [...comics]
+    //返還一個只有原陣列的 value陣列
+     //賦予陣列內每個數值一個隨機數值
+    .map(function (data) {
+        return {
+          value: data,
+          sort: Math.random(),
+        };
+      })
+      //使用sort 可以用 a - b 自動排序
+    .sort(function(a,b){
+        return a.sort - b.sort;
+    })
+    //將排序好的陣列，只抓取他的value
+    .map(function (data) {
+        return data.value;
+      })
+    .forEach(function(comicsname , index){
+        console.log(comicsname)
         const listItem = document.createElement('li');
         
         listItem.setAttribute('data-index' , index);
 
         listItem.innerHTML = ` 
         <span class="number">${index +1 }</span>
-        <div class="draggable">
+        <div class="draggable"draggable="true">
         <p class="comicsname">${comicsname}</p>
         <i class="fas fa-grip-lines"></i>
         </div>

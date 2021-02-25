@@ -1,0 +1,74 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+:root {
+    --border-color:#e3e5e4;
+    --background-color:#c3c7ca;
+    --text-color :#34444f;
+}
+* {
+    box-sizing: border-box;
+   
+}
+
+body {
+    background-image: url(img/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato',sans-serif;
+    
+}
+
+body::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+body *{
+    z-index: 1;
+}
+
+.draggable-list {
+    border: 1px solid var(--border-color);
+    color: #fff;
+    list-style: none;
+}
+
+.draggable-list li{
+    display: flex;
+    flex:1;
+}
+
+.draggable-list{
+    padding: 0;
+}
+
+.draggable-list li:not(:last-of-type){
+    border-bottom: 1px solid var(--border-color);
+}
+
+.draggable-list .number {
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    height: 50px;
+    width: 50px;
+    color: black;
+}
+
+.comicsname{
+    margin:  0 20px 0 0;
+}
