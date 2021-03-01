@@ -1,4 +1,4 @@
-const draggable_list = $('#draggable-list');
+const draggable_list = $('#draggable-list')[0];
 const check = $('#check');
 
 //設定漫畫的陣列
@@ -28,8 +28,8 @@ createList();
 function createList(){
   [...comics]
   //返還一個只有原陣列的 value陣列
-     //賦予陣列內每個數值一個隨機數值
-     .map(function (data) {
+   //賦予陣列內每個數值一個隨機數值
+  .map(function (data) {
       return {
         value: data,
         sort: Math.random(),
@@ -44,15 +44,90 @@ function createList(){
       return data.value;
     })
   .forEach(function(comicsname , index){
-    const listItem = $('<li></li>').appendTo(draggable_list)
-    listItem.attr('data-index' , index);
-    listItem.html( ` 
-    <span class="number">${index +1 }</span>
-    <div class="draggable" draggable="true">
-    <p class="comicsname">${comicsname}</p>
-    <i class="fas fa-grip-lines"></i>
-    </div>
-    `) 
-    listItems.push(listItem);
-});
+      const listItem = document.createElement('li');
+      listItem.setAttribute('data-index' , index);
+
+      listItem.innerHTML = ` 
+      <span class="number">${index +1 }</span>
+      <div class="draggable" draggable="true">
+      <p class="comicsname">${comicsname}</p>
+      <i class="fas fa-grip-lines"></i>
+      </div>
+      `;
+      listItems.push(listItem);
+      draggable_list.appendChild(listItem);
+  });
+
+  addEventListeners()
 }
+
+//寫入滑鼠拖曳事件
+function addEventListeners(){
+  //抓取 class DOM 進行操作
+  const draggables = document.querySelectorAll('.draggable');
+  const dragListItems = document.querySelectorAll('.draggable-list li');
+
+  draggables.forEach(function(draggable){
+    draggable.addEventListener('dragstart',dragStart);
+  })
+
+  dragListItems.forEach(function(item){
+    item.addEventListener('dragover',dragOver);
+    item.addEventListener('drop',dragDrop);
+    item.addEventListener('dragenter',dragEnter);
+    item.addEventListener('dragleave',dragLeave);
+  })
+}
+
+function dragStart(){
+  //console.log('Event' , 'dragstart');
+  //使用 closest() 找到最接近的 li
+  dragStartIndex = +this.closest('li').getAttribute('data-index');
+}
+
+function dragEnter(){
+  //console.log('Event' , 'dragenter');
+  this.classList.add('over');
+}
+function dragDrop(){
+  //console.log('Event' , 'dragdrop');
+  const dragEndIndex = +this.getAttribute('data-index');
+  swapItems(dragStartIndex, dragEndIndex);
+  this.classList.remove('over');
+}
+
+//找到 抓取與放下的資訊並將兩者交換
+function swapItems(fromIndex , toIndex){
+  const itemOne = listItems[fromIndex].querySelector('.draggable');
+  const itemTwo = listItems[toIndex].querySelector('.draggable');
+  
+  listItems[fromIndex].appendChild(itemTwo);
+  listItems[toIndex].appendChild(itemOne);
+}
+function dragOver(e){
+  //over 在這邊的預設事件會干擾到 Drop 所以將 over 關掉
+  e.preventDefault();
+  //console.log('Event' , 'dragover');
+}
+function dragLeave(){
+  this.classList.remove('over');
+  //console.log('Event' , 'dragleave');
+}
+
+
+check.on('click' , checkOrder );
+
+//確認表單是否是正確的函式
+function checkOrder(){
+  //把目前的陣列去跑一次函式，定義變數先把陣列裡面的text抓出來
+  //接著去跟原本設定好的 comics 陣列去對比
+  listItems.forEach(function(listItem , index){
+    const comicsName = listItem.querySelector('.draggable').innerText.trim(); 
+    if(comicsName !== comics[index]){
+      listItem.classList.add('wrong');
+    }else{
+      listItem.classList.remove('wrong');
+      listItem.classList.add('right');
+    }
+  })
+};
