@@ -114,3 +114,22 @@ function dragLeave(){
   this.classList.remove('over');
   //console.log('Event' , 'dragleave');
 }
+
+//寫入點擊事件，確認表單陣列位置是否正確
+
+check.addEventListener('click' , checkOrder );
+
+//確認表單是否是正確的函式
+function checkOrder(){
+  //把目前的陣列去跑一次函式，定義變數先把陣列裡面的text抓出來
+  //接著去跟原本設定好的 comics 陣列去對比
+  listItems.forEach(function(listItem , index){
+    const comicsName = listItem.querySelector('.draggable').innerText.trim(); 
+    if(comicsName !== comics[index]){
+      listItem.classList.add('wrong');
+    }else{
+      listItem.classList.remove('wrong');
+      listItem.classList.add('right');
+    }
+  })
+};
