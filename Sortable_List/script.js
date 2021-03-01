@@ -50,7 +50,7 @@ function createList(){
 
         listItem.innerHTML = ` 
         <span class="number">${index +1 }</span>
-        <div class="draggable"draggable="true">
+        <div class="draggable" draggable="true">
         <p class="comicsname">${comicsname}</p>
         <i class="fas fa-grip-lines"></i>
         </div>
@@ -59,7 +59,42 @@ function createList(){
         draggable_list.appendChild(listItem);
     });
 
+    addEventListeners()
+}
 
+//寫入滑鼠拖曳事件
+function addEventListeners(){
+  //抓取 class DOM 進行操作
+  const draggables = document.querySelectorAll('.draggable');
+  const dragListItems = document.querySelectorAll('.draggable-list li');
 
-  
+  draggables.forEach(function(draggable){
+    draggable.addEventListener('dragstart',dragStart);
+  })
+
+  dragListItems.forEach(function(item){
+    item.addEventListener('dragover',dragOver);
+    item.addEventListener('drop',dragDrop);
+    item.addEventListener('dragenter',dragEnter);
+    item.addEventListener('dragleave',dragLeave);
+  })
+}
+
+function dragStart(){
+  //console.log('Event' , 'dragstart');
+}
+
+function dragEnter(){
+  //console.log('Event' , 'dragenter');
+  this.classList.add('over');
+}
+function dragDrop(){
+  //console.log('Event' , 'dragdrop');
+}
+function dragOver(){
+  //console.log('Event' , 'dragover');
+}
+function dragLeave(){
+  this.classList.remove('over');
+  //console.log('Event' , 'dragleave');
 }

@@ -55,6 +55,7 @@ body::after{
     
     color: #fff;
     list-style: none;
+    
 }
 
 
@@ -98,7 +99,9 @@ body::after{
     align-items: center;
     justify-content: space-between;
     padding: 15px;
-    flex:1
+    flex:1;
+    background: #fff;
+    
 }
 
 .draggable-list li.right .comicsname{
@@ -110,7 +113,7 @@ body::after{
 }
 
 .draggable-list li.over .draggable {
-    background-color: #eaeaea ;
+    background-color: thistle ;
 }
 
 .check-btn{
