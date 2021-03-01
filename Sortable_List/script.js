@@ -82,6 +82,8 @@ function addEventListeners(){
 
 function dragStart(){
   //console.log('Event' , 'dragstart');
+  //使用 closest() 找到最接近的 li
+  dragStartIndex = +this.closest('li').getAttribute('data-index');
 }
 
 function dragEnter(){
@@ -90,8 +92,22 @@ function dragEnter(){
 }
 function dragDrop(){
   //console.log('Event' , 'dragdrop');
+  const dragEndIndex = +this.getAttribute('data-index');
+  swapItems(dragStartIndex, dragEndIndex);
+  this.classList.remove('over');
 }
-function dragOver(){
+
+//找到 抓取與放下的資訊並將兩者交換
+function swapItems(fromIndex , toIndex){
+  const itemOne = listItems[fromIndex].querySelector('.draggable');
+  const itemTwo = listItems[toIndex].querySelector('.draggable');
+  
+  listItems[fromIndex].appendChild(itemTwo);
+  listItems[toIndex].appendChild(itemOne);
+}
+function dragOver(e){
+  //over 在這邊的預設事件會干擾到 Drop 所以將 over 關掉
+  e.preventDefault();
   //console.log('Event' , 'dragover');
 }
 function dragLeave(){
