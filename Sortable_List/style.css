@@ -11,6 +11,12 @@
    
 }
 
+h1 {
+    background: #fff;
+    border-radius: 10px;
+    padding: 5px;
+}
+
 body {
     background-image: url(img/bg.jpg);
     background-repeat: no-repeat;
@@ -28,9 +34,8 @@ body {
 
 .bodyp{
     font-size: 20px;
-    color: #fff;
-    background: gray;
-    border: gray 1px solid;
+    color: #000;
+    background: #fff;
     border-radius: 10px;
     padding: 5px;
     margin: 0;
